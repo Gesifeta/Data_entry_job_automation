@@ -10,8 +10,6 @@ from selenium.webdriver.chrome.service import Service
 import requests
 
 proxy = 'http://brd-customer-hl_c312bb53-zone-web_unlocker1:ss4a8c9g62hw@brd.superproxy.io:33335'
-url = 'https://geo.brdtest.com/mygeo.json'
-
 proxies = {
     'http': proxy,
     'https': proxy,
@@ -27,6 +25,7 @@ class Zillow:
                                      verify = False,
                                      proxies=proxies,)
         self.soup = BeautifulSoup(self.response.text,"html.parser")
+        self.rooms = []
         # self.driver.get(f"https://www.zillow.com/{city}/{category}/")
         # self.driver.maximize_window()
         # self.wait = WebDriverWait(self.driver, 10)
@@ -38,12 +37,12 @@ class Zillow:
         self.address= []
         self.info = []
         self.hrefs= []
-
-        for link in self.links:
-            self.address.append(link.text)
-            self.hrefs.append(link.get_attribute_list("href"))
         for room in self.room_info:
             self.info.append(room.text)
+
+        for link in self.links:
+            self.hrefs.append(link.get('href'))
+            self.address.append(link.text)
 
 
 

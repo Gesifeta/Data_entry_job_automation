@@ -1,4 +1,5 @@
 from data import Zillow
+
 from data_entry import *
 
 headers = {
@@ -18,8 +19,10 @@ while True:
         if selection == 1:
             text = Zillow(category="rentals",city=city,headers=headers)
             text.get_data()
-            print(text.info)
-            print(text.hrefs)
-            print(text.address)
+            links= text.hrefs
+            addresses= text.address
+            info= text.info
+            enter_data = DataEntry()
+            enter_data.submit_form(address=addresses,info=info,link=links)
         elif selection == 2:
             break
