@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.service import Service
 
 import requests
 
-proxy = 'http://brd-customer-hl_c312bb53-zone-web_unlocker1:ss4a8c9g62hw@brd.superproxy.io:33335'
+proxy = 'http://brd-customer-hl_c312bb53-zone-web_unlocker1:@brd.superproxy.io:33335'
 proxies = {
     'http': proxy,
     'https': proxy,
